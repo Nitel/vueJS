@@ -15,8 +15,8 @@ export default {
   data () {
     return {
       locations: [],
-      Nom: '', // <-- here
-      Photographie: '', // <-- here
+      Nom: '',
+      Photographie: '',
       Menu: '',
       Adresse: ''
     }
@@ -27,7 +27,7 @@ export default {
     }
   },
   methods: {
-    addLocation (Nom, Photographie, Adresse, Menu) { // <-- and here
+    addLocation (Nom, Photographie, Adresse, Menu) {
       db.collection('locations').add({ Nom, Photographie, Menu, Adresse })
     }
   }

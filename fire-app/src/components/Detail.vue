@@ -1,21 +1,26 @@
 <template>
-  <div><img :src="locatison.Photographie">
-    <h1>{{locations.Nom}}</h1>
-    <p>{{locations.Menu}}</p>
-    <p>{{locations.Adresse}}</p></div>
+  <div><img :src="location.Photographie">
+    <h1>{{location.Nom}}</h1>
+    <p>{{location.Menu}}</p>
+    <p>{{location.Adresse}}</p></div>
 
 </template>
 
 <script>
 import { db } from '../main'
 
+/* var restaurants = db.collection('locations')
+const id = this.route.snapshot.params['id']
+
+const location = restaurants.doc(id) */
+
 export default {
   name: 'Detail',
   data () {
     return {
       locations: [],
-      Nom: '', // <-- here
-      Photographie: '', // <-- here
+      Nom: '',
+      Photographie: '',
       Menu: '',
       Adresse: ''
     }

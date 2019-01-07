@@ -1,17 +1,15 @@
 <template>
 
 <div>
-    <article v-for="(location, idx) in locations" :key="idx">
-      <h1 ref="/Detail/{{idx}}">{{ location.Nom }}</h1>
-      <p>{{locations.Menu}}</p>
-
-    </article>
+  <article v-for="(location, idx) in locations" :key="idx">
+    <h1 v-on:click="navigate(idx)">{{ location.Nom }}</h1>
+  </article>
   </div>
 
 </template>
 
 <script>
-import { db } from '../main'
+import { db, router } from '../main'
 
 export default {
   name: 'HelloWorld',
@@ -30,6 +28,9 @@ export default {
     }
   },
   methods: {
+    navigate (id) {
+      router.push({ path: `/Detail/${id}` })
+    }
   }
 }
 

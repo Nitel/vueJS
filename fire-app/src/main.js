@@ -12,7 +12,7 @@ import Detail from './components/Detail.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
+export const routes = [
   {path: '/Add', component: AddRestau},
   {path: '/Home', component: HelloWorld},
   {path: '/Detail/:id', component: Detail}
