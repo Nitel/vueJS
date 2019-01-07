@@ -1,8 +1,8 @@
 <template>
-  <!--<img :src="location.Photographie">
-  <h1>{{locations.Nom}}</h1>
-  <p>{{locations.Menu}}</p>
-  <p>{{locations.Adresse}}</p>-->
+  <div><img :src="locatison.Photographie">
+    <h1>{{locations.Nom}}</h1>
+    <p>{{locations.Menu}}</p>
+    <p>{{locations.Adresse}}</p></div>
 
 </template>
 
@@ -22,8 +22,7 @@ export default {
   },
   firestore () {
     return {
-      locations: db.collection('locations').orderBy('Nom'),
-      loc: db.collection('locations').valueOf()
+      locations: db.collection('locations').orderBy('Nom')
     }
   }
 }
