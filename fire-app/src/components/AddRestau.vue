@@ -10,11 +10,13 @@
 
 <script>
 import { db } from '../main'
+
 export default {
   name: 'AddRestau',
   data () {
     return {
       locations: [],
+      Id: 0,
       Nom: '',
       Photographie: '',
       Menu: '',

@@ -8,17 +8,18 @@
 
 <script>
 import { db } from '../main'
+// import { params } from './HelloWorld'
 
-/* var restaurants = db.collection('locations')
-const id = this.route.snapshot.params['id']
-
-const location = restaurants.doc(id) */
+// var restaurants = db.collection('locations')
+// var location = db.collection('locations').doc(id)
+// const location = restaurants.doc(id)
 
 export default {
   name: 'Detail',
   data () {
     return {
       locations: [],
+      Id: 0,
       Nom: '',
       Photographie: '',
       Menu: '',

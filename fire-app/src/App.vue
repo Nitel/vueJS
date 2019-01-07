@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="https://organicthemes.com/demo/restaurant/wp-content/themes/organic-restaurant/images/logo.png">
-    <router-link to="/Home">List</router-link>
+    <router-link to="/">List</router-link>
     <router-link to="/Add">Add a restaurant</router-link>
 
     <app-user></app-user>

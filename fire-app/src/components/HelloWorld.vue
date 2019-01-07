@@ -11,11 +11,14 @@
 <script>
 import { db, router } from '../main'
 
+export var params
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
       locations: [],
+      Id: 0,
       Nom: '',
       Photographie: '',
       Menu: '',
@@ -30,6 +33,7 @@ export default {
   methods: {
     navigate (id) {
       router.push({ path: `/Detail/${id}` })
+      params = id
     }
   }
 }

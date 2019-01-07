@@ -14,7 +14,7 @@ Vue.use(VueRouter)
 
 export const routes = [
   {path: '/Add', component: AddRestau},
-  {path: '/Home', component: HelloWorld},
+  {path: '/', component: HelloWorld},
   {path: '/Detail/:id', component: Detail}
 
 ]
