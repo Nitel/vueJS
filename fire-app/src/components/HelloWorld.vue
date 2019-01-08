@@ -1,8 +1,8 @@
 <template>
 
-<div>
+<div >
   <article v-for="(location, idx) in locations" :key="idx">
-    <h1 v-on:click="navigate(idx)">{{ location.Nom }}</h1>
+    <router-link class="button is-primary" v-bind:to="{ name: 'Detail', params: { restau: location.slug }}">{{ location.Nom }}</router-link>
   </article>
   </div>
 
@@ -18,12 +18,24 @@ export default {
   data () {
     return {
       locations: [],
-      Id: 0,
-      Nom: '',
-      Photographie: '',
-      Menu: '',
-      Adresse: ''
+      loading: true
     }
+  },
+  created () {
+    db.collection('locations').get().then((querySnapshot) => {
+      this.loading = false
+      querySnapshot.forEach((doc) => {
+        let data = {
+          'id': doc.id,
+          'Nom': doc.data().firstname,
+          'Image': doc.data().lastname,
+          'Adresse': doc.data().emailaddress,
+          'Menu': doc.data().phonenumber,
+          'slug': doc.data().slug
+        }
+        this.locations.push(data)
+      })
+    })
   },
   firestore () {
     return {
