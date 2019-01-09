@@ -1,17 +1,28 @@
 <template>
-  <div><img :src="Image">
+  <div>
+    <h1>Description</h1>
+    <!-- <img :src="Image"> -->
     <h1>{{Nom}}</h1>
     <p>{{Menu}}</p>
     <p>{{Adresse}}</p>
-
-      <div v-for="(item, idx) in Prix" :key="idx" v-on:click="commande += item">
-        <p  v-if="idx=0">Entrée</p>
-        <p  v-if="idx=1">Plat</p>
-        <p  v-if="idx=2">Dessert</p>
+    <p>*************************************************</p>
+    <h1>Menu</h1>
+      <div v-for="(item, idx) in Prix" :key="idx" @click="add(item, idx)">
+        <p  v-if="idx === 0">Entrée</p>
+        <p  v-if="idx === 1">Plat</p>
+        <p  v-if="idx === 2">Dessert</p>
         <p> {{ item }}$</p>
         </div>
-<div>
+        <br><br><br>
+        <p>*************************************************</p>
+<div v-if="commande > 0">
+  <p  v-if="Entree > 0" v-on:click="del(2.5, 0)">{{ Entree }} Entrée(s)</p>
+  <p  v-if="Plat > 0" v-on:click="del(5, 1)">{{ Plat }} Plat(s)</p>
+  <p  v-if="Dessert > 0" v-on:click="del(10, 2)">{{ Dessert }} Dessert(s)</p>
   <h1>Total commande : {{ commande }}$</h1>
+  <div>
+
+  </div>
 </div>
         </div>
 </template>
@@ -33,7 +44,10 @@ export default {
       Menu: '',
       Adresse: '',
       Prix: [2.5, 5, 10],
-      commande: 0
+      commande: 0,
+      Entree: 0,
+      Plat: 0,
+      Dessert: 0
     }
   },
   firestore () {
@@ -68,8 +82,25 @@ export default {
         })
       })
     },
-    add (prix) {
-      // this.commande = commande += prix
+    add (x, y) {
+      this.commande += x
+      if (y === 0) {
+        this.Entree++
+      } if (y === 1) {
+        this.Plat++
+      } if (y === 2) {
+        this.Dessert++
+      }
+    },
+    del (x, y) {
+      this.commande -= x
+      if (y === 0) {
+        this.Entree--
+      } if (y === 1) {
+        this.Plat--
+      } if (y === 2) {
+        this.Dessert--
+      }
     }
   }
 }
