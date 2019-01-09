@@ -1,11 +1,17 @@
 <template>
-  <form @submit="addLocation(Nom, Image, Adresse, Menu)">
+  
+  <div >
+  
+  <h2>&nbsp;</h2>
+  <form @submit="addLocation(Nom, Image, Adresse, Menu)" id="form">
     <input v-model="Nom" placeholder="Name">
     <input v-model="Image" placeholder="Image URL">
     <input v-model="Adresse" placeholder="Location">
     <input v-model="Menu" placeholder="Menu">
-    <button type="submit">Add New Restaurant</button>
+    <button type="submit">Ajouter ce restaurant </button>
   </form>
+  
+  </div>
 </template>
 
 <script>
@@ -22,10 +28,10 @@ export default {
       Prix: []
     }
   },
-  firestore () {
+   firestore () {
     return {
       locations: db.collection('locations').orderBy('Nom')
-    }
+    } 
   },
   methods: {
     addLocation (Nom, Photographie, Adresse, Menu) {
@@ -57,6 +63,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+#form{
+	
+	background-color:gainsboro;
+	margin-top:20px;
+	margin-left:20%;
+	margin-right:20%;
+	padding:5px;
+	border-radius: 20px;
+	border-style:solid;
 
+	
+}
 </style>

@@ -1,29 +1,31 @@
 <template>
   <div>
-    <h1>Description</h1>
-    <!-- <img :src="Image"> -->
-    <h1>{{Nom}}</h1>
-    <p>{{Menu}}</p>
-    <p>{{Adresse}}</p>
-    <p>*************************************************</p>
-    <h1>Menu</h1>
-      <div v-for="(item, idx) in Prix" :key="idx" @click="add(item, idx)">
-        <p  v-if="idx === 0">Entrée</p>
-        <p  v-if="idx === 1">Plat</p>
-        <p  v-if="idx === 2">Dessert</p>
-        <p> {{ item }}$</p>
-        </div>
-        <br><br><br>
-        <p>*************************************************</p>
-<div v-if="commande > 0">
-  <p  v-if="Entree > 0" v-on:click="del(2.5, 0)">{{ Entree }} Entrée(s)</p>
-  <p  v-if="Plat > 0" v-on:click="del(5, 1)">{{ Plat }} Plat(s)</p>
-  <p  v-if="Dessert > 0" v-on:click="del(10, 2)">{{ Dessert }} Dessert(s)</p>
-  <h1>Total commande : {{ commande }}$</h1>
-  <div>
-
-  </div>
-</div>
+    <h2>Description</h2>
+    <img :src="Image">
+    <h3>{{Nom}}</h3>
+    <div id="description">
+		<p>Thème : {{Menu}}</p>
+		<p>Lieu : {{Adresse}}</p>
+	</div>
+    <h2>Menu</h2>
+	<div id="menu">
+		<div v-for="(item, idx) in Prix" :key="idx" @click="add(item, idx)" >
+			<div id="plat"  v-if="idx === 0">Entrée - {{ item }}€</div>
+			<div id="plat" v-if="idx === 1">Plat - {{ item }}€</div>
+			<div id="plat" v-if="idx === 2">Dessert - {{ item }}€</div>
+			
+		</div>
+	</div>
+    <br><br><br><br>
+        
+	<div v-if="commande > 0" id="total">
+		<h2>Total</h2>
+		<div id="plat-com" v-if="Entree > 0" v-on:click="del(2.5, 0)">{{ Entree }} Entrée(s)</div>
+		<div id="plat-com"  v-if="Plat > 0" v-on:click="del(5, 1)">{{ Plat }} Plat(s)</div>
+		<div id="plat-com"  v-if="Dessert > 0" v-on:click="del(10, 2)">{{ Dessert }} Dessert(s)</div>
+		<h2 id="paye">Total à payer : {{ commande }}€</h2>
+		
+	</div>
         </div>
 </template>
 
@@ -49,7 +51,7 @@ export default {
       Plat: 0,
       Dessert: 0
     }
-  },
+	},
   firestore () {
     return {
       locations: db.collection('locations').orderBy('Nom')
@@ -107,5 +109,51 @@ export default {
 </script>
 
 <style scoped>
+p{
+padding:10px;
+margin:0px;}
+
+#description{
+background-color:yellowgreen;
+margin-left:31%;
+margin-right:31%;
+margin-top:0px;
+}
+
+#menu{
+margin-top:20px;
+}
+
+#plat{
+background-color:white;
+margin-top:5px;
+margin-left:35%;
+margin-right:35%;
+padding:5px;
+border-radius: 20px;
+border-style:solid;
+cursor:pointer;
+
+}
+#plat-com{
+background-color:gainsboro;
+margin-top:5px;
+margin-left:35%;
+margin-right:35%;
+padding:5px;
+border-radius: 20px;
+border-style:solid;
+cursor:pointer;
+
+}
+
+#total{
+margin-top:-75px;
+
+}
+#paye{
+background-color : transparent;
+}
+
 
 </style>
