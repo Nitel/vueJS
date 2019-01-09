@@ -2,8 +2,18 @@
   <div><img :src="Image">
     <h1>{{Nom}}</h1>
     <p>{{Menu}}</p>
-    <p>{{Adresse}}</p></div>
+    <p>{{Adresse}}</p>
 
+      <div v-for="(item, idx) in Prix" :key="idx" v-on:click="commande += item[idx]">
+        <p  v-if="idx=0">Entrée</p>
+        <p  v-if="idx=1">Plat</p>
+        <p  v-if="idx=2">Dessert</p>
+        <p> {{ item }}$</p>
+        </div>
+<div>
+  <h1>Total commande : {{ commande }}$</h1>
+</div>
+        </div>
 </template>
 
 <script>
@@ -21,7 +31,9 @@ export default {
       Nom: '',
       Image: '',
       Menu: '',
-      Adresse: ''
+      Adresse: '',
+      Prix: [2.5, 5, 10],
+      commande: 0
     }
   },
   firestore () {

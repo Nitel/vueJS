@@ -27,10 +27,11 @@ export default {
       querySnapshot.forEach((doc) => {
         let data = {
           'id': doc.id,
-          'Nom': doc.data().firstname,
-          'Image': doc.data().lastname,
-          'Adresse': doc.data().emailaddress,
-          'Menu': doc.data().phonenumber,
+          'Nom': doc.data().Nom,
+          'Image': doc.data().Image,
+          'Adresse': doc.data().Adresse,
+          'Menu': doc.data().Menu,
+          'Prix': doc.data().Prix,
           'slug': doc.data().slug
         }
         this.locations.push(data)

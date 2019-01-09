@@ -18,7 +18,8 @@ export default {
       Nom: '',
       Image: '',
       Menu: '',
-      Adresse: ''
+      Adresse: '',
+      Prix: []
     }
   },
   firestore () {
@@ -33,6 +34,7 @@ export default {
         Photographie: Photographie,
         Menu: Menu,
         Adresse: Adresse,
+        Prix: [2.5, 5, 10],
         slug: slug })
         .then(docRef => {
           console.log('Document written with ID: ', docRef.id)
