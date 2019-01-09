@@ -4,7 +4,7 @@
     <p>{{Menu}}</p>
     <p>{{Adresse}}</p>
 
-      <div v-for="(item, idx) in Prix" :key="idx" v-on:click="commande += item[idx]">
+      <div v-for="(item, idx) in Prix" :key="idx" v-on:click="commande += item">
         <p  v-if="idx=0">Entrée</p>
         <p  v-if="idx=1">Plat</p>
         <p  v-if="idx=2">Dessert</p>
@@ -67,6 +67,9 @@ export default {
           this.Adresse = doc.data().Adresse
         })
       })
+    },
+    add (prix) {
+      // this.commande = commande += prix
     }
   }
 }
