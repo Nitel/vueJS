@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import { db } from '../main'
+import { db, router } from '../main'
 export default {
   name: 'AddRestau',
   data () {
@@ -44,6 +44,7 @@ export default {
         .catch(function (error) {
           console.error('Error adding document: ', error)
         })
+      router.push({ path: `/` })
     },
     generateUUID () {
       let d = new Date().getTime()
