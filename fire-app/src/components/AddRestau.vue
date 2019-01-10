@@ -1,7 +1,5 @@
 <template>
-  
   <div >
-  
   <h2>&nbsp;</h2>
   <form @submit="addLocation(Nom, Image, Adresse, Menu)" id="form">
     <input v-model="Nom" placeholder="Name">
@@ -10,13 +8,10 @@
     <input v-model="Menu" placeholder="Menu">
     <button type="submit">Ajouter ce restaurant </button>
   </form>
-  
   </div>
 </template>
-
 <script>
 import { db } from '../main'
-
 export default {
   name: 'AddRestau',
   data () {
@@ -28,10 +23,10 @@ export default {
       Prix: []
     }
   },
-   firestore () {
+  firestore () {
     return {
       locations: db.collection('locations').orderBy('Nom')
-    } 
+    }
   },
   methods: {
     addLocation (Nom, Photographie, Adresse, Menu) {
@@ -62,18 +57,14 @@ export default {
   }
 }
 </script>
-
 <style>
 #form{
-	
-	background-color:gainsboro;
-	margin-top:20px;
-	margin-left:20%;
-	margin-right:20%;
-	padding:5px;
-	border-radius: 20px;
-	border-style:solid;
-
-	
+background-color:gainsboro;
+margin-top:20px;
+margin-left:20%;
+margin-right:20%;
+padding:5px;
+border-radius: 20px;
+border-style:solid;
 }
 </style>
